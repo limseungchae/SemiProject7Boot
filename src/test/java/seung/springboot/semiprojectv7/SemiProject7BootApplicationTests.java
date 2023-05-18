@@ -1,4 +1,4 @@
-package seung.springboot.semiproject7;
+package seung.springboot.semiprojectv7;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>seung.springboot</groupId>
-    <artifactId>semiproject7Boot</artifactId>
+    <artifactId>semiprojectV7Boot</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>SemiProject7Boot</name>
     <description>SemiProject7Boot</description>
