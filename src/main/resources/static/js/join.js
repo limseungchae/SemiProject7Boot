@@ -50,9 +50,6 @@ const pwdmsg = document.querySelector('#pwdmsg');
 const repasswd = document.querySelector('#repasswd');
 
 let modal = null;
-try {
-    modal = new bootstrap.Modal(zipmodal, {});
-} catch (e) { }
 
 joinbtn?.addEventListener('click', ()=>{
     if (joinfrm.userid.value == '') alert('아이디를 입력하세요!!');
@@ -83,7 +80,13 @@ zpmdbtn?.addEventListener('click', () => {
     }
     dong.value = '';
 
-    modal.show();
+    let mymodal = null;
+    try {
+        mymodal = new bootstrap.Modal(zipmodal, {});
+        modal = mymodal;
+    } catch (e) { }
+
+    mymodal.show();
 });
 
 const showzipaddr = (jsons) => {
