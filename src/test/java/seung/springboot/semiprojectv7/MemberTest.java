@@ -6,15 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import seung.springboot.semiprojectv7.model.Member;
-import seung.springboot.semiprojectv7.repository.MemmberRepository;
+import seung.springboot.semiprojectv7.repository.MemberRepository;
 
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 @SpringBootTest
 public class MemberTest {
 
     @Autowired
-    MemmberRepository memberRepository;
+    MemberRepository memberRepository;
 
     @Test
     @DisplayName("전체 멤버 조회")
@@ -27,6 +30,7 @@ public class MemberTest {
     @Test
     @DisplayName("member save")
     public void saveMember() {
+        // LocalDateTime localDateTime = LocalDateTime.now();
         Member m = new Member(null, "abc123", "123456",
                 "1234567", "abc123", "987xyz", "123-456",
                 "서울시 구로구 구로동", "더좋은 IT 아카데미",
@@ -53,5 +57,19 @@ public class MemberTest {
         m.setMbno(2L);
 
         memberRepository.delete(m);
+    }
+
+    @Test
+    @DisplayName("member login")
+    public void loginMember() {
+        Member m = new Member();
+        m.setUserid("abc123");
+        m.setPasswd("abc123");
+
+        assertNull (memberRepository.findByUseridAndPasswd(
+                m.getUserid(), m.getPasswd()) );
+
+        assertNotNull (memberRepository.findByUseridAndPasswd(
+                m.getUserid(), m.getPasswd()) );
     }
 }
