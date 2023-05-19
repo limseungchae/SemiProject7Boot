@@ -29,7 +29,9 @@ public class Member {
     private String email;
     private String phone;
 
+    // @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
+    @Column(insertable = false, updatable = false)
     private LocalDateTime regdate;
 
 }
