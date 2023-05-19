@@ -18,7 +18,7 @@ public class BoardServiceImpl implements BoardService{
     public List<Board> readBoard(int cpage) {
         int stbno = (cpage - 1) * 25;
         //System.out.println(bddao.selectBoard(stbno).size());
-        return bddao.selectBoard(cpage);
+        return bddao.selectBoard(cpage - 1);
     }
 
     @Override
