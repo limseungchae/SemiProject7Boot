@@ -1,16 +1,36 @@
 package seung.springboot.semiprojectv7.model;
 
-import lombok.Data;
+import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
 
-@Data
+import javax.persistence.*;
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "board")
+@Setter
+@Getter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class Board {
-    private String bno;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long bno;
     private String title;
     private String userid;
-    private String thumbs;
-    private String views;
-    private String content;
-    private String regdate;
 
+    @Column(insertable = false, updatable = false)
+    private Integer thumbs;
+
+    @Column(insertable = false, updatable = false)
+    private Integer views;
+
+    private String content;
+
+    @CreatedDate
+    @Column(insertable = false, updatable = false)
+    private LocalDateTime regdate;
 
 }
