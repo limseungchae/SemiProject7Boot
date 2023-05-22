@@ -17,13 +17,14 @@ public class BoardController {
 
 
     @GetMapping("/list")
-    public ModelAndView list(int cpg) {
+    public ModelAndView list(Integer cpg) {
         ModelAndView mv =new ModelAndView();
         // System.out.println(bdsrv.readBoard(cpg).size());
 
         mv.setViewName("board/list");
+        if (cpg == null || cpg == 0) cpg = 1;
 
-        mv.addObject("bdlist",bdsrv.readBoard(cpg));
+        mv.addObject("bdlist", bdsrv.readBoard(cpg));
         mv.addObject("cpg", cpg);
         mv.addObject("stpg", ((cpg - 1) / 10) * 10 + 1);
         mv.addObject("cntpg", bdsrv.countBoard());
