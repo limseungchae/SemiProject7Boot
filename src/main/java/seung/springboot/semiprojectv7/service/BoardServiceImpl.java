@@ -15,7 +15,7 @@ public class BoardServiceImpl implements BoardService{
     @Autowired private BoardDAO bddao;
 
     @Override
-    public List<Board> readBoard(int cpage) {
+    public Map<String, Object> readBoard(int cpage) {
         // int stbno = (cpage - 1) * 25;
         //System.out.println(bddao.selectBoard(stbno).size());
         return bddao.selectBoard(cpage - 1);
@@ -31,12 +31,7 @@ public class BoardServiceImpl implements BoardService{
         params.put("ftype", ftype);
         params.put("fkey", fkey);
 
-        return bddao.selectBoard(params);
-    }
-
-    @Override
-    public int countBoard() {
-        return bddao.countBoard();
+        return (List<Board>) bddao.selectBoard(params);
     }
 
     @Override
