@@ -53,28 +53,34 @@ public class joinController {
         return viewPage;
     }
 
-    @PostMapping("/joinme")
-    public ModelAndView joinme(Member mb){
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("join/joinme");
-        mv.addObject("mb", mb);
-        return mv;
+    @GetMapping("/joinme")
+    public String joinme(Model m){
+
+        m.addAttribute("member", new Member());
+
+        return "join/joinme";
     }
+
+
+    @PostMapping("/joinme")
+    public String joinmeok(@Valid Member member,
+                           BindingResult br, HttpSession sess) {
+        String viewPage = "redirect:/join/joinok";
+
+        if (br.hasErrors()) viewPage = "join/joinme";
+        else {
+            jnsrv.newMember(member);
+            sess.invalidate();
+        }
+
+        return viewPage;
+    }
+
 
     @GetMapping("/joinok")
     public String joinok() {
-        return "join/joinok.tiles";
-    }
 
-    @PostMapping("/joinok")
-    public String joinok(Member m, String grecaptcha) {
-        String view = "error.tiles";
-
-        if(jnsrv.newMember(m))
-            view = "join/joinok.tiles";
-
-
-        return view;
+        return "join/joinok";
     }
 
     // 우편번호 검색
@@ -99,7 +105,7 @@ public class joinController {
 
     // 아이디 사용가능여부 검사
     // /join/checkuid?uid=아이디
-    // 사용가능 : 0
+    // 사용가능   : 0
     // 사용불가능 : 1
     @ResponseBody
     @GetMapping("/checkuid")
