@@ -22,7 +22,7 @@ public class BoardServiceImpl implements BoardService{
     }
 
     @Override
-    public List<Board> readBoard(int cpage, String ftype, String fkey) {
+    public Map<String, Object> readBoard(int cpage, String ftype, String fkey) {
         int stbno = (cpage - 1);
 
         // 처리시 사용할 데이터들을 해쉬맵에 담아서 보냄
@@ -31,18 +31,9 @@ public class BoardServiceImpl implements BoardService{
         params.put("ftype", ftype);
         params.put("fkey", fkey);
 
-        return (List<Board>) bddao.selectBoard(params);
+        return (Map<String, Object>) bddao.selectBoard(params);
     }
 
-    @Override
-    public int countBoard(String ftype, String fkey) {
-        // 처리시 사용할 데이터들을 해쉬맵에 담아서 보냄
-        Map<String, Object> params = new HashMap<>();
-        params.put("ftype", ftype);
-        params.put("fkey", fkey);
-
-        return bddao.countBoard(params);
-    }
 
     @Override
     public boolean newBoard(Board bd) {
