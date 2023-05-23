@@ -4,6 +4,13 @@
       layout:decorate="~{layout/template}">
 
 <th:block layout:fragment="content">
+
+    <th:block th:if="${cpg > cntpg}">
+        <script th:inline="javascript">
+            location.href="board/list?cpg=" + [[${cntpg}]];
+        </script>
+    </th:block>
+
     <div id="main" th:with="pglink=${(#strings.isEmpty(param.fkey)) ? '/board/list?cpg=': '/board/find?ftype=' + param.ftype + '&fkey=' + param.fkey +'&cpg='}">
 
         <div class="mt-5">
@@ -13,7 +20,7 @@
 
         <div class="row mt-5">
             <div class="row offset-2 col-6">
-                <th:block th:if="${not #strings.isEmpty(session.UID)}">
+<!--                <th:block th:if="${not #strings.isEmpty(session.UID)}">-->
                     <div class="col-3">
                         <select class="form-select" id="findtype">
                             <option value="title">제목</option>
@@ -26,15 +33,15 @@
                                th:value="${param.fkey}"></div>
                     <div class="col-3">
                         <button type="button" class="btn btn-light" id="findbtn">
-                            <i class="fa-solid fa-magnifying-glass"> </i> 검색하기</button></div></if>
-                </th:block>
+                            <i class="fa-solid fa-magnifying-glass"> </i> 검색하기</button></div>
+<!--                </th:block>-->
+                &nbsp;
             </div>
             <div class="col-2 text-end">
                 <th:block th:if="${session.UID ne null}">
                     <button type="button" class="btn btn-light" id="newbtn">
-                        <i class="fa fa-plus-circle"> </i> 새글쓰기</button></if>
+                        <i class="fa fa-plus-circle"> </i> 새글쓰기</button>
                 </th:block>
-                &nbsp;
             </div>
         </div>
 
@@ -83,7 +90,7 @@
                         <!--<th:block th:if="${cpg - 1 gt 0}"><li class="page-item"></th:block>
                         <th:block th:unless="${cpg - 1 gt 0}"><li class="page-item disabied"></th:block>-->
                         <li th:class="${ (cpg - 1 gt 0)? 'page-item' : 'page-item disabled'}">
-                            <a class="page-link" th:href="|${pglink}${cpg-1}|">이전</a></li>
+                            <a class="page-link" th:href="|${pglink}${cpg - 1}|">이전</a></li>
 
 
                         <th:block th:each="i : ${#numbers.sequence(stpg, stpg+9)}">
@@ -94,7 +101,7 @@
                             </th:block>
                         </th:block>
 
-                        <li th:class="${ (cpg lt cntpg)? 'page-item' : 'page-item disabled'}">
+                        <li th:class="${ (cpg +1 le cntpg)? 'page-item' : 'page-item disabled'}">
                             <a class="page-link" th:href="|${pglink}${cpg+1}|">다음</a></li>
 
                         <th:block th:if="${cpg lt cntpg}">
@@ -102,6 +109,7 @@
                         </th:block>
                     </ul>
                 </nav>
+                <!-- 총 페이지 수 표시 <th:block th:text="|${pglink} / ${cntpg}|"></th:block>-->
             </div>
         </div>
 
