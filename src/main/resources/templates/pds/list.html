@@ -69,7 +69,7 @@
 
                     <tr th:each=" pds :${pdslist}">
                         <td th:text="${pds.pno}">&nbsp;</td>
-                        <td><a th:href="|/board/view?bno=${pds.pno}|" th:text="${pds.title}">&nbsp;</a></td>
+                        <td><a th:href="|/pds/view?pno=${pds.pno}|" th:text="${pds.title}">&nbsp;</a></td>
                         <td th:text="${pds.userid}">&nbsp;</td>
                         <td th:text="${#strings.substring(pds.regdate,0,10)}">&nbsp;</td>
                         <th>&nbsp;</th>
