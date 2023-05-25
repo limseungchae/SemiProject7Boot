@@ -7,7 +7,7 @@ writebtn?.addEventListener('click', () => {
     else if (grecaptcha.getResponse() === '') alert('자동가입방지를 확인하세요!');
     else {
         pdsfrm.method = 'post';
-        pdsfrm.enctype = "multipert/form-data";
+        pdsfrm.enctype = "multipart/form-data";
         pdsfrm.submit();
     }
 });
