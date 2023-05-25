@@ -23,4 +23,6 @@ public interface PdsService {
     HttpHeaders getHeader(String fname, String uuid);
 
     UrlResource getResoutce(String fname, String uuid);
+
+    void downfile(int pno);
 }

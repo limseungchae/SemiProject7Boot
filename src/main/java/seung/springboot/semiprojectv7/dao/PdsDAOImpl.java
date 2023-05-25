@@ -50,9 +50,16 @@ public class PdsDAOImpl implements PdsDAO{
         return pdsRepository.findById((long)pno).get();
     }
 
+
     @Override
     public PdsAttach selectOnePdsAttach(int pno) {
 
         return pdsaRepository.findByPno(pno);
+    }
+
+    @Override
+    public void countDownload(int pno) {
+        pdsaRepository.countDownByPno(pno); // 다운로드수 증가
+
     }
 }
