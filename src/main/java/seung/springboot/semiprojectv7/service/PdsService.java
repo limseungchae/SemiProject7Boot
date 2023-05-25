@@ -3,10 +3,12 @@ package seung.springboot.semiprojectv7.service;
 import org.springframework.web.multipart.MultipartFile;
 import seung.springboot.semiprojectv7.model.Pds;
 
+import java.util.Map;
+
 public interface PdsService {
 
-    int newPds(Pds pds);
+    Map<String, Object> newPds(Pds pds);
 
-    boolean newPdsAttach(MultipartFile attach, int pno);
+    boolean newPdsAttach(MultipartFile attach, Map<String, Object> pinfo);
 
 }
