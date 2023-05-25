@@ -1,5 +1,7 @@
 package seung.springboot.semiprojectv7.service;
 
+import org.springframework.core.io.UrlResource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.web.multipart.MultipartFile;
 import seung.springboot.semiprojectv7.model.Pds;
 import seung.springboot.semiprojectv7.model.PdsAttach;
@@ -17,4 +19,8 @@ public interface PdsService {
     Pds readOnePds(int pno);
 
     PdsAttach readOnePdsAttatch(int pno);
+
+    HttpHeaders getHeader(String fname, String uuid);
+
+    UrlResource getResoutce(String fname, String uuid);
 }
