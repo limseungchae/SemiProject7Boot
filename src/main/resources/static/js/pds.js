@@ -11,3 +11,9 @@ writebtn?.addEventListener('click', () => {
         pdsfrm.submit();
     }
 });
+
+//목록보기
+const newbtn = document.querySelector("#newbtn")
+newbtn?.addEventListener('click', () => {
+    location.href = '/pds/write';
+});
