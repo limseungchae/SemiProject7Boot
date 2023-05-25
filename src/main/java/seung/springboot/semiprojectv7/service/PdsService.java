@@ -6,6 +6,7 @@ import org.springframework.web.multipart.MultipartFile;
 import seung.springboot.semiprojectv7.model.Pds;
 import seung.springboot.semiprojectv7.model.PdsAttach;
 
+import java.util.List;
 import java.util.Map;
 
 public interface PdsService {
@@ -25,4 +26,6 @@ public interface PdsService {
     UrlResource getResoutce(String fname, String uuid);
 
     void downfile(int pno);
+
+    List<String> readFtype();
 }

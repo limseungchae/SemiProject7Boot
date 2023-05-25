@@ -16,6 +16,7 @@ import seung.springboot.semiprojectv7.model.Pds;
 import seung.springboot.semiprojectv7.model.PdsAttach;
 import seung.springboot.semiprojectv7.service.PdsService;
 
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -32,13 +33,16 @@ public class PdsController {
         mv.setViewName("pds/list");
         if (cpg == null || cpg == 0) cpg = 1;
 
+        // 자료실 게시글 읽어옴
         Map<String, Object> pds = pdssrv.readPds(cpg);
+        // 게시글의 첨부파일 유형 읽어옴
+        List<String> ftypes = pdssrv.readFtype();
 
         mv.addObject("pdslist", pds.get("pdslist"));
         mv.addObject("cpg", cpg);
         mv.addObject("stpg", ((cpg - 1) / 10) * 10 + 1);
         mv.addObject("cntpg", pds.get("cntpg"));
-
+        mv.addObject("ftypes", ftypes);
 
         return mv;
     }

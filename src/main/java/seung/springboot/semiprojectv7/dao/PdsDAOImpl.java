@@ -11,6 +11,7 @@ import seung.springboot.semiprojectv7.repository.PdsRepository;
 import seung.springboot.semiprojectv7.repository.PdsaRepository;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Repository("pdsdao")
@@ -61,5 +62,10 @@ public class PdsDAOImpl implements PdsDAO{
     public void countDownload(int pno) {
         pdsaRepository.countDownByPno(pno); // 다운로드수 증가
 
+    }
+
+    @Override
+    public List<String> selectFtype() {
+        return pdsaRepository.findFtypes();
     }
 }
