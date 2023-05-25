@@ -27,7 +27,7 @@ public class PdsController {
         mv.setViewName("pds/list");
         if (cpg == null || cpg == 0) cpg = 1;
 
-        Map<String, Object> pds = pdssrv.readBoard(cpg);
+        Map<String, Object> pds = pdssrv.readPds(cpg);
 
         mv.addObject("pdslist", pds.get("pdslist"));
         mv.addObject("cpg", cpg);
@@ -62,8 +62,8 @@ public class PdsController {
     @GetMapping("/view")
     public String view(int pno, Model m) {
 
-        m.addAttribute("pds", pdssrv.readPds(pno));
-        m.addAttribute("attach", pdssrv.readPdsAttatch(pno));
+        m.addAttribute("pds", pdssrv.readOnePds(pno));
+        m.addAttribute("attach", pdssrv.readOnePdsAttatch(pno));
 
         return "pds/view";
 
