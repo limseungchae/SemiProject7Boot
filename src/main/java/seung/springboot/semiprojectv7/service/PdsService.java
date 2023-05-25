@@ -11,4 +11,5 @@ public interface PdsService {
 
     boolean newPdsAttach(MultipartFile attach, Map<String, Object> pinfo);
 
+    Map<String, Object> readBoard(Integer cpg);
 }
