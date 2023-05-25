@@ -47,4 +47,14 @@ public class PdsServiceImpl implements PdsService{
     public Map<String, Object> readBoard(Integer cpg) {
         return pdsdao.selectPds(cpg - 1);
     }
+
+    @Override
+    public Pds readPds(int pno) {
+        return pdsdao.selectOnePds(pno);
+    }
+
+    @Override
+    public PdsAttach readPdsAttatch(int pno) {
+        return pdsdao.selectOnePdsAttach(pno);
+    }
 }
