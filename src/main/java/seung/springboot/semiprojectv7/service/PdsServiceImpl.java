@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 import seung.springboot.semiprojectv7.dao.PdsDAO;
 import seung.springboot.semiprojectv7.model.Pds;
 import seung.springboot.semiprojectv7.model.PdsAttach;
+import seung.springboot.semiprojectv7.model.PdsReply;
 import seung.springboot.semiprojectv7.utils.PdsUtils;
 
 import java.util.HashMap;
@@ -80,5 +81,10 @@ public class PdsServiceImpl implements PdsService{
     @Override
     public List<String> readFtype() {
         return pdsdao.selectFtype();
+    }
+
+    @Override
+    public List<PdsReply> readPdsReply(int pno) {
+        return pdsdao.selectPdsReply(pno);
     }
 }

@@ -73,6 +73,7 @@ public class PdsController {
 
         m.addAttribute("pds", pdssrv.readOnePds(pno));
         m.addAttribute("attach", pdssrv.readOnePdsAttatch(pno));
+        m.addAttribute("rplist", pdssrv.readPdsReply(pno));
 
         return "pds/view";
 
@@ -94,5 +95,6 @@ public class PdsController {
 
         return ResponseEntity.ok().headers(header).body(resource);
     }
+
 
 }
