@@ -84,11 +84,11 @@
                     <tr th:each="rp : ${rplist}">
                         <th:block th:if="${rp.rpno == rp.refno}">
                         <!-- 댓글시작 -->
-                        <td style="width:25%"><h4 th:text="${rp.userid}"></h4></td>
+                        <td style="width:25%"><h4 >[[${rp.userid}]]</h4></td>
                         <td>
-                            <div style="background: yellow; padding: 5px" th:text="${rp.regdate}">
+                            <div style="background: yellow; padding: 5px">[[${rp.regdate}]]
                             <span style="float: right">[추가] / [수정] / [삭제]</span></div>
-                            <p style="padding: 5px 0" th:text="${rp.reply}"></p>
+                            <p style="padding: 5px 0">[[${rp.reply}]]</p>
                         </td>
                         </th:block>
 
@@ -96,9 +96,9 @@
                         <!-- 대댓글시작 -->
                         <td style="width:25%"><h4>&nbsp;</h4></td>
                         <td>
-                            <div style="background: lime; padding: 5px" th:text="${rp.userid}">
+                            <div style="background: lime; padding: 5px" >[[${rp.userid}]]
                                 <span style="float: right" th:text="|${rp.regdate} [수정] / [삭제| ">]</span></div>
-                            <p style="padding: 5px 0" th:text="${rp.reply}"></p>
+                            <p style="padding: 5px 0" >[[${rp.reply}]]</p>
                         </td>
                         </th:block>
                     </tr>
@@ -126,7 +126,19 @@
             </div>
         </div>
 
+
+        <div class="SettingView-module__layer_setting___JwfQs">
+            <a href="#" role="button" class="SettingView-module__btn_setting___Z_3Uu SettingView-module__type_top___GkN8V" aria-pressed="false">
+                <span class="blind"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
+  <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+</svg></span>
+            </a>
+        </div>
+
+
     </div>
+
+
 
     <script src="/assets/js/pds.js"></script>
 </th:block>
