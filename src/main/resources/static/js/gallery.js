@@ -1,5 +1,6 @@
 // 이미지 첨부 조건 검사
 const checkAttachs = () => {
+    let checkOK = true;
     const attachs = document.querySelector("#attachs");
 
     // 이미지 첨부파일 하나 이상이라면
@@ -11,11 +12,12 @@ const checkAttachs = () => {
             // image/jpg, image/jpeg, image/png, image/gif
             if (!attach.type.startsWith('image')) {
                 alert('첨부하려는 파일은 반드시 이미지여야 합니다!');
-                return false;
+                checkOK = false;
             }
         }
     } else {
         alert('하나 이상의 이미지를 선택하세요!!');
+        checkOK = false;
     }
 
 
@@ -41,7 +43,7 @@ writebtn?.addEventListener('click', () => {
 // 새글쓰기 버튼
 const newbtn = document.querySelector("#newbtn")
 newbtn?.addEventListener('click', () => {
-    location.href = '/gal/write';
+    location.href = '/gallery/write';
 });
 
 // 본문보기
