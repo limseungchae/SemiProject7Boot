@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 import seung.springboot.semiprojectv7.model.Gallery;
 import seung.springboot.semiprojectv7.model.Pds;
 import seung.springboot.semiprojectv7.service.GalleryService;
@@ -22,7 +23,19 @@ public class GalleryController {
     GalleryService galsrv;
 
     @GetMapping("/list")
-    public String list() {
+    public String list(Integer cpg) {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("gallery/list");
+        if (cpg == null || cpg == 0) cpg = 1;
+
+        Map<String, Object> gals = galsrv.readGallery(cpg);
+
+        mv.addObject("gallist", gals.get("gallist"));
+        mv.addObject("cpg", cpg);
+        mv.addObject("stpg", ((cpg - 1) / 10) * 10 + 1);
+        mv.addObject("cntpg", gals.get("cntpg"));
+
+
         return "gallery/list";
     }
 
@@ -49,5 +62,16 @@ public class GalleryController {
 
         return viewPage;
     }
+
+    @GetMapping("/view")
+    public ModelAndView view(int gno) {
+
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("gal", galsrv.readOneGallery(gno));
+        mv.setViewName("gallery/view");
+
+        return mv;
+    }
+
 
 }
