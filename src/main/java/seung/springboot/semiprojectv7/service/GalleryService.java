@@ -14,4 +14,5 @@ public interface GalleryService {
     Map<String, Object> readGallery(Integer cpg);
 
 
+    Object readOneGallery(int gno);
 }
