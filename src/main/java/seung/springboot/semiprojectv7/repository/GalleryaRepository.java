@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import seung.springboot.semiprojectv7.model.GalAttach;
 import seung.springboot.semiprojectv7.model.GalleryList;
+import seung.springboot.semiprojectv7.model.GalleryView;
 
 
 public interface GalleryaRepository extends JpaRepository<GalAttach, Long> {
@@ -19,4 +20,6 @@ public interface GalleryaRepository extends JpaRepository<GalAttach, Long> {
         //@Query(" select g, a from Gallery g " +
         //       " inner join GalAttach a on g.gno = a.gno ")
         Page<GalleryList> findAllBy(Pageable paging);
+
+        GalleryView findAllByGno(int gno);
 }
